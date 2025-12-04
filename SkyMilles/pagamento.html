@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - SkyMilles</title>
+    <link rel="stylesheet" href="pagamento.css">
+</head>
+<body>
+    <!-- Loading -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Processando...</p>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="http://localhost/dashboard/SkyMilles/"><img id="Logo"
+                src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+        <a id="NomeMarca" href="index.html"><span>SKY</span>MILLES</a>
+        <button class="btn-back" onclick="window.location.href='index.html'">
+                ← Voltar para Início
+            </button>
+    </header>   
+
+    <!-- Container Principal -->
+    <div class="container">
+        <!-- Resumo do Pedido -->
+        <aside class="order-summary">
+            <h2>📋 Resumo do Pedido</h2>
+            
+            <div class="plan-info" id="planInfo">
+                <div class="plan-badge" id="planBadge">PLANO BÁSICO</div>
+                <h3 id="planName">Plano Básico</h3>
+                <div class="plan-price" id="planPrice">R$ 199,99</div>
+                <p class="plan-period">Assinatura mensal</p>
+            </div>
+
+            <div class="benefits-list" id="benefitsList">
+                <h4>✨ Benefícios inclusos:</h4>
+                <ul>
+                    <li>✓ 1 bagagem</li>
+                    <li>✓ Check-in online</li>
+                    <li>✓ 25% de desconto em voos internacionais</li>
+                </ul>
+            </div>
+
+            <div class="price-breakdown">
+                <div class="price-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">R$ 199,99</span>
+                </div>
+                <div class="price-item">
+                    <span>Taxa de processamento:</span>
+                    <span>R$ 0,00</span>
+                </div>
+                <div class="price-total">
+                    <span>Total:</span>
+                    <span id="total">R$ 199,99</span>
+                </div>
+            </div>
+
+            <div class="security-badge">
+                🔒 Pagamento 100% seguro
+            </div>
+        </aside>
+
+        <!-- Formulário de Pagamento -->
+        <main class="payment-form">
+            <h1>💳 Finalizar Pagamento</h1>
+            
+            <!-- Métodos de Pagamento -->
+            <div class="payment-methods">
+                <h3>Escolha a forma de pagamento:</h3>
+                <div class="payment-tabs">
+                    <button class="payment-tab active" data-method="credit">
+                        💳 Cartão de Crédito
+                    </button>
+                    <button class="payment-tab" data-method="pix">
+                        📱 PIX
+                    </button>
+                    <button class="payment-tab" data-method="boleto">
+                        📄 Boleto
+                    </button>
+                </div>
+            </div>
+
+            <!-- Formulário de Cartão -->
+            <form id="formCartao" class="payment-content active">
+                <div class="form-group">
+                    <label>Nome no Cartão</label>
+                    <input type="text" id="cardName" placeholder="Como está impresso no cartão" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Número do Cartão</label>
+                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                    <div class="card-brands">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Validade</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" id="cardCvv" placeholder="123" maxlength="4" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>CPF do Titular</label>
+                    <input type="text" id="cardCpf" placeholder="000.000.000-00" maxlength="14" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Parcelas</label>
+                    <select id="installments">
+                        <option value="1">1x sem juros</option>
+                        <option value="2">2x sem juros</option>
+                        <option value="3">3x sem juros</option>
+                        <option value="6">6x com juros</option>
+                        <option value="12">12x com juros</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-pay">
+                    🔒 Finalizar Pagamento
+                </button>
+            </form>
+
+            <!-- PIX -->
+            <div id="formPix" class="payment-content">
+                <div class="pix-container">
+                    <h3>📱 Pagamento via PIX</h3>
+                    <p>Escaneie o QR Code abaixo ou copie o código:</p>
+                    
+                    <div class="qr-code">
+                        <img id="qrCodePix" src="https://i.postimg.cc/htYzdLTw/meu-pix.jpg" alt="QR Code PIX">
+                    </div>
+
+                    <div class="pix-code">
+                        <input type="text" id="pixCode" value="00020126580014BR.GOV.BCB.PIX..." readonly>
+                        <button class="btn-copy" onclick="copyPixCode()">📋 Copiar</button>
+                    </div>
+
+                    <div class="pix-info">
+                        <p>⏱️ O pagamento será confirmado em até 2 minutos</p>
+                        <p>💡 Após o pagamento, você receberá um e-mail de confirmação</p>
+                    </div>
+
+                    <button class="btn-pay" onclick="confirmPayment('pix')">
+                        ✓ Já fiz o pagamento
+                    </button>
+                </div>
+            </div>
+
+            <!-- Boleto -->
+            <div id="formBoleto" class="payment-content">
+                <div class="boleto-container">
+                    <h3>📄 Pagamento via Boleto</h3>
+                    <p>O boleto será gerado após a confirmação:</p>
+                    
+                    <div class="boleto-info">
+                        <div class="info-item">
+                            <strong>📅 Vencimento:</strong>
+                            <span id="dueDate">3 dias úteis</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>💰 Valor:</strong>
+                            <span id="boletoValue">R$ 199,99</span>
+                        </div>
+                        <div class="info-item">
+                            <strong>📧 Envio:</strong>
+                            <span>Por e-mail e disponível para download</span>
+                        </div>
+                    </div>
+
+                    <div class="alert-info">
+                        ⚠️ A assinatura será ativada após a confirmação do pagamento (até 3 dias úteis)
+                    </div>
+
+                    <button class="btn-pay" onclick="generateBoleto()">
+                        📄 Gerar Boleto
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success">
+            <div class="success-icon">✓</div>
+            <h2>Pagamento Confirmado!</h2>
+            <p>Sua assinatura foi ativada com sucesso.</p>
+            <p>Enviamos um e-mail de confirmação com todos os detalhes.</p>
+            <button class="btn-primary" onclick="window.location.href='perfil.html'">
+                Ir para Meu Perfil
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-brand-text"><span>SKY</span>MILLES</div>
+                </div>
+                <div class="footer-copyright">
+                    © 2025 SkyMilles. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="pagamento.js"></script>
+</body>
+</html>

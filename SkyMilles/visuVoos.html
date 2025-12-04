@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar e Editar Voos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c5364 0%, #203a43 50%, #0f2027 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(44, 83, 100, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex: 1;
+        }
+
+        .logo-img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+
+        .logo-img:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+        }
+
+        h1 {
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            margin: 0;
+            flex: 1;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-3px);
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+        }
+
+        .btn-refresh {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .btn-novo {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            color: white;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            outline: none;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #2c5364, #203a43);
+        }
+
+        th {
+            padding: 18px;
+            text-align: left;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        tbody tr {
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .status-confirmado { background: #d4edda; color: #155724; }
+        .status-agendado { background: #d1ecf1; color: #0c5460; }
+        .status-atrasado { background: #fff3cd; color: #856404; }
+        .status-cancelado { background: #f8d7da; color: #721c24; }
+        .status-embarcando { background: #cce5ff; color: #004085; }
+        .status-em-voo { background: #e2e3e5; color: #383d41; }
+        .status-finalizado { background: #d4edda; color: #155724; }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .empty-state h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Modal de Edição */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(44, 83, 100, 0.98);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: white;
+            font-size: 2em;
+        }
+
+        .close-modal {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 28px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: white;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .btn-cancelar-modal {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-salvar-modal {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cancelar-modal:hover,
+        .btn-salvar-modal:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 20px 30px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            animation: slideIn 0.5s;
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .message.success {
+            background: linear-gradient(135deg, #27ae60, #229954);
+        }
+
+        .message.error {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .header {
+                flex-wrap: wrap;
+            }
+
+            .header-left {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+                src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+                <h1>Voos Cadastrados</h1>
+            </div>
+            <div class="header-actions">
+                <button class="back-btn" onclick="window.location.href='voos.html'">← Voltar</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn btn-refresh" onclick="carregarVoos()">🔄 Atualizar</button>
+            <button class="btn btn-export" onclick="exportarVoos()">📥 Exportar JSON</button>
+            <button class="btn btn-novo" onclick="window.location.href='voos.html'">➕ Novo Voo</button>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <h3>Total de Voos</h3>
+                <p id="totalVoos">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Confirmados</h3>
+                <p id="voosConfirmados">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Agendados</h3>
+                <p id="voosAgendados">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Companhias</h3>
+                <p id="totalCompanhias">0</p>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Filtrar por Status</label>
+                <select id="filtroStatus" onchange="filtrarPorStatus()">
+                    <option value="">Todos</option>
+                    <option value="Confirmado">Confirmado</option>
+                    <option value="Agendado">Agendado</option>
+                    <option value="Atrasado">Atrasado</option>
+                    <option value="Cancelado">Cancelado</option>
+                    <option value="Embarcando">Embarcando</option>
+                    <option value="Em Voo">Em Voo</option>
+                    <option value="Finalizado">Finalizado</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Filtrar por Companhia</label>
+                <select id="filtroCompanhia" onchange="filtrarPorCompanhia()">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Buscar por Código</label>
+                <input type="text" id="buscarCodigo" placeholder="Ex: AA1234" onkeyup="buscarPorCodigo()">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loading" class="loading">Carregando voos...</div>
+            <table id="voosTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Origem</th>
+                        <th>Destino</th>
+                        <th>Saída</th>
+                        <th>Chegada</th>
+                        <th>Companhia</th>
+                        <th>Status</th>
+                        <th>Assentos</th>
+                        <th>Valor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="voosBody">
+                </tbody>
+            </table>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <h2>Nenhum voo cadastrado</h2>
+                <p>Comece cadastrando seu primeiro voo!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="modalEdicao" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✏️ Editar Voo</h2>
+                <button class="close-modal" onclick="fecharModal()">×</button>
+            </div>
+
+            <form id="formEdicao">
+                <input type="hidden" id="edit_id">
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="edit_origem">Cidade/País de Origem</label>
+                        <select id="edit_origem" required>
+                            <option value="">Selecione...</option>
+                            <option value="São Paulo/BR">São Paulo, Brasil</option>
+                            <option value="Rio de Janeiro/BR">Rio de Janeiro, Brasil</option>
+                            <option value="Brasília/BR">Brasília, Brasil</option>
+                            <option value="Salvador/BR">Salvador, Brasil</option>
+                            <option value="Belo Horizonte/BR">Belo Horizonte, Brasil</option>
+                            <option value="Nova York/EUA">Nova York, EUA</option>
+                            <option value="Londres/UK">Londres, Reino Unido</option>
+                            <option value="Paris/FR">Paris, França</option>
+                            <option value="Tóquio/JP">Tóquio, Japão</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_destino">Cidade/País de Destino</label>
+                        <select id="edit_destino" required>
+                            <option value="">Selecione...</option>
+                            <option value="São Paulo/BR">São Paulo, Brasil</option>
+                            <option value="Rio de Janeiro/BR">Rio de Janeiro, Brasil</option>
+                            <option value="Brasília/BR">Brasília, Brasil</option>
+                            <option value="Salvador/BR">Salvador, Brasil</option>
+                            <option value="Belo Horizonte/BR">Belo Horizonte, Brasil</option>
+                            <option value="Nova York/EUA">Nova York, EUA</option>
+                            <option value="Londres/UK">Londres, Reino Unido</option>
+                            <option value="Paris/FR">Paris, França</option>
+                            <option value="Tóquio/JP">Tóquio, Japão</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_codigo">Código do Voo</label>
+                        <input type="text" id="edit_codigo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_companhia">Companhia</label>
+                        <select id="edit_companhia" required>
+                            <option value="">Selecione...</option>
+                            <option value="LATAM">LATAM Airlines</option>
+                            <option value="GOL">GOL Linhas Aéreas</option>
+                            <option value="Azul">Azul Linhas Aéreas</option>
+                            <option value="American">American Airlines</option>
+                            <option value="Delta">Delta Airlines</option>
+                            <option value="United">United Airlines</option>
+                            <option value="Emirates">Emirates</option>
+                            <option value="Lufthansa">Lufthansa</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_saida">Data/Hora Saída</label>
+                        <input type="datetime-local" id="edit_saida" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_chegada">Data/Hora Chegada</label>
+                        <input type="datetime-local" id="edit_chegada" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_frequencia">Frequência</label>
+                        <select id="edit_frequencia" required>
+                            <option value="">Selecione...</option>
+                            <option value="Diário">Diário</option>
+                            <option value="Semanal">Semanal</option>
+                            <option value="Quinzenal">Quinzenal</option>
+                            <option value="Mensal">Mensal</option>
+                            <option value="Único">Voo Único</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_status">Status do Voo</label>
+                        <select id="edit_status" required>
+                            <option value="">Selecione...</option>
+                            <option value="Confirmado">Confirmado</option>
+                            <option value="Agendado">Agendado</option>
+                            <option value="Atrasado">Atrasado</option>
+                            <option value="Cancelado">Cancelado</option>
+                            <option value="Embarcando">Embarcando</option>
+                            <option value="Em Voo">Em Voo</option>
+                            <option value="Finalizado">Finalizado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_assentos">Quantidade de Assentos</label>
+                        <input type="number" id="edit_assentos" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_modelo">Modelo Aeronave</label>
+                        <input type="text" id="edit_modelo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_valor">Valor Base do Voo</label>
+                        <input type="text" id="edit_valor" required>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancelar-modal" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn-salvar-modal">💾 Salvar Alterações</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost/dashboard/SkyMilles/api.php';
+        let todosVoos = [];
+
+        document.addEventListener('DOMContentLoaded', carregarVoos);
+
+        async function carregarVoos() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('voosTable').style.display = 'none';
+            document.getElementById('emptyState').style.display = 'none';
+
+            try {
+                console.log('📋 Buscando voos...');
+                const response = await fetch(`${API_URL}?action=listar&resource=voos`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const result = await response.json();
+                console.log('📊 Resposta da API:', result);
+
+                if (result.success && result.data && result.data.length > 0) {
+                    todosVoos = result.data;
+                    console.log('✅ Voos carregados:', todosVoos.length);
+                    exibirVoos(todosVoos);
+                    atualizarEstatisticas(todosVoos);
+                    preencherFiltros(todosVoos);
+                    document.getElementById('voosTable').style.display = 'table';
+                    document.getElementById('emptyState').style.display = 'none';
+                } else {
+                    console.warn('⚠️ Sem voos encontrados');
+                    document.getElementById('emptyState').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('❌ Erro:', error);
+                showMessage('Erro ao carregar voos: ' + error.message, 'error');
+                document.getElementById('emptyState').style.display = 'block';
+            }
+
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function exibirVoos(voos) {
+            const tbody = document.getElementById('voosBody');
+            tbody.innerHTML = '';
+
+            if (!voos || voos.length === 0) {
+                document.getElementById('emptyState').style.display = 'block';
+                return;
+            }
+
+            voos.forEach(voo => {
+                const tr = document.createElement('tr');
+                const statusClass = `status-${(voo.status || 'confirmado').toLowerCase().replace(' ', '-')}`;
+                
+                // Formatação segura de datas
+                const dataSaida = formatarDataSegura(voo.saida);
+                const dataChegada = formatarDataSegura(voo.chegada);
+                
+                tr.innerHTML = `
+                    <td><strong>${voo.codigo || 'N/A'}</strong></td>
+                    <td>${voo.origem || 'N/A'}</td>
+                    <td>${voo.destino || 'N/A'}</td>
+                    <td>${dataSaida}</td>
+                    <td>${dataChegada}</td>
+                    <td>${voo.companhia || 'N/A'}</td>
+                    <td><span class="status-badge ${statusClass}">${voo.status || 'Confirmado'}</span></td>
+                    <td>${voo.assentos || 'N/A'}</td>
+                    <td>${voo.valor || 'N/A'}</td>
+                    <td class="actions">
+                        <button class="action-btn btn-edit" onclick='editarVoo(${JSON.stringify(voo).replace(/'/g, "&apos;")})'>✏️ Editar</button>
+                        <button class="action-btn btn-delete" onclick="deletarVoo(${voo.id})">🗑️ Deletar</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function formatarDataSegura(data) {
+            try {
+                if (!data) return 'N/A';
+                
+                // Se tiver T, é formato ISO (datetime-local envia assim)
+                if (data.includes('T')) {
+                    data = data.replace('T', ' ');
+                }
+                
+                const d = new Date(data);
+                
+                // Validar se é data válida
+                if (isNaN(d.getTime())) {
+                    return data; // Retorna como está se não conseguir parsear
+                }
+                
+                return d.toLocaleString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch (e) {
+                console.warn('Erro ao formatar data:', data, e);
+                return data || 'N/A';
+            }
+        }
+
+        function atualizarEstatisticas(voos) {
+            document.getElementById('totalVoos').textContent = voos.length;
+            document.getElementById('voosConfirmados').textContent = voos.filter(v => v.status === 'Confirmado').length;
+            document.getElementById('voosAgendados').textContent = voos.filter(v => v.status === 'Agendado').length;
+            
+            const companhias = [...new Set(voos.map(v => v.companhia))];
+            document.getElementById('totalCompanhias').textContent = companhias.length;
+        }
+
+        function preencherFiltros(voos) {
+            const companhias = [...new Set(voos.map(v => v.companhia))];
+            const selectCompanhia = document.getElementById('filtroCompanhia');
+            selectCompanhia.innerHTML = '<option value="">Todas</option>';
+            
+            companhias.forEach(comp => {
+                const option = document.createElement('option');
+                option.value = comp;
+                option.textContent = comp;
+                selectCompanhia.appendChild(option);
+            });
+        }
+
+        function filtrarPorStatus() {
+            const status = document.getElementById('filtroStatus').value;
+            if (status === '') {
+                exibirVoos(todosVoos);
+            } else {
+                const filtrados = todosVoos.filter(v => v.status === status);
+                exibirVoos(filtrados);
+            }
+        }
+
+        function filtrarPorCompanhia() {
+            const companhia = document.getElementById('filtroCompanhia').value;
+            if (companhia === '') {
+                exibirVoos(todosVoos);
+            } else {
+                const filtrados = todosVoos.filter(v => v.companhia === companhia);
+                exibirVoos(filtrados);
+            }
+        }
+
+        function buscarPorCodigo() {
+            const codigo = document.getElementById('buscarCodigo').value.toLowerCase();
+            if (codigo === '') {
+                exibirVoos(todosVoos);
+            } else {
+                const filtrados = todosVoos.filter(v => 
+                    (v.codigo || '').toLowerCase().includes(codigo)
+                );
+                exibirVoos(filtrados);
+            }
+        }
+
+        function editarVoo(voo) {
+            document.getElementById('edit_id').value = voo.id;
+            document.getElementById('edit_origem').value = voo.origem || '';
+            document.getElementById('edit_destino').value = voo.destino || '';
+            document.getElementById('edit_codigo').value = voo.codigo || '';
+            document.getElementById('edit_companhia').value = voo.companhia || '';
+            
+            // Converter datas corretamente
+            if (voo.saida) {
+                document.getElementById('edit_saida').value = voo.saida.includes('T') ? voo.saida : voo.saida.replace(' ', 'T');
+            }
+            if (voo.chegada) {
+                document.getElementById('edit_chegada').value = voo.chegada.includes('T') ? voo.chegada : voo.chegada.replace(' ', 'T');
+            }
+            
+            document.getElementById('edit_frequencia').value = voo.frequencia || '';
+            document.getElementById('edit_status').value = voo.status || '';
+            document.getElementById('edit_assentos').value = voo.assentos || '';
+            document.getElementById('edit_modelo').value = voo.modelo || '';
+            document.getElementById('edit_valor').value = voo.valor || '';
+            
+            document.getElementById('modalEdicao').classList.add('active');
+        }
+
+        function fecharModal() {
+            document.getElementById('modalEdicao').classList.remove('active');
+            document.getElementById('formEdicao').reset();
+        }
+
+        document.getElementById('formEdicao').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const vooAtualizado = {
+                id: document.getElementById('edit_id').value,
+                origem: document.getElementById('edit_origem').value,
+                destino: document.getElementById('edit_destino').value,
+                codigo: document.getElementById('edit_codigo').value,
+                saida: document.getElementById('edit_saida').value.replace('T', ' '),
+                chegada: document.getElementById('edit_chegada').value.replace('T', ' '),
+                frequencia: document.getElementById('edit_frequencia').value,
+                companhia: document.getElementById('edit_companhia').value,
+                assentos: document.getElementById('edit_assentos').value,
+                status: document.getElementById('edit_status').value,
+                modelo: document.getElementById('edit_modelo').value,
+                valor: document.getElementById('edit_valor').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}?action=atualizar&resource=voos`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(vooAtualizado)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('✅ Voo atualizado com sucesso!', 'success');
+                    fecharModal();
+                    carregarVoos();
+                } else {
+                    showMessage('❌ ' + (result.message || 'Erro ao atualizar'), 'error');
+                }
+            } catch (error) {
+                console.error('❌ Erro:', error);
+                showMessage('Erro ao atualizar voo!', 'error');
+            }
+        });
+
+        async function deletarVoo(id) {
+            if (!confirm('⚠️ Deseja realmente deletar este voo?')) return;
+
+            try {
+                const response = await fetch(`${API_URL}?action=deletar&id=${id}&resource=voos`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    showMessage('✅ Voo deletado com sucesso!', 'success');
+                    carregarVoos();
+                } else {
+                    showMessage('❌ ' + result.message, 'error');
+                }
+            } catch (error) {
+                console.error('❌ Erro:', error);
+                showMessage('Erro ao deletar voo!', 'error');
+            }
+        }
+
+        async function exportarVoos() {
+            if (todosVoos.length === 0) {
+                showMessage('Nenhum voo para exportar!', 'error');
+                return;
+            }
+
+            const dataStr = JSON.stringify(todosVoos, null, 2);
+            const blob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `voos_${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            showMessage('✅ Voos exportados com sucesso!', 'success');
+        }
+
+        function showMessage(text, type) {
+            const existing = document.querySelector('.message');
+            if (existing) existing.remove();
+
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            message.textContent = text;
+            document.body.appendChild(message);
+
+            setTimeout(() => message.remove(), 3000);
+        }
+
+        // Fechar modal ao clicar fora
+        document.getElementById('modalEdicao').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharModal();
+            }
+        });
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                fecharModal();
+            }
+        });
+    </script>
+</body>
+</html>

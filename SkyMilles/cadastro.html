@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - SkyMilles</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+
+<body>
+    <!-- Mensagem de sucesso -->
+    <div class="success-message" id="successMessage">
+        ✓ Cadastro realizado com sucesso!
+    </div>
+
+    <!-- Modal de Seleção de Avatar -->
+    <div class="avatar-modal" id="avatarModal">
+        <div class="avatar-modal-content">
+            <div class="avatar-modal-header">
+                <h2>Escolha seu Avatar</h2>
+                <button class="close-modal" onclick="closeAvatarModal()">✕</button>
+            </div>
+            <div class="avatar-grid" id="avatarGrid">
+                <!-- Avatares serão inseridos aqui -->
+            </div>
+        </div>
+    </div>
+
+    <div class="left-section">
+        <button class="back-button" onclick="location.href='index.html'">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            </svg>
+        </button>
+
+        <div class="profile-image" onclick="openAvatarModal()">
+            <img id="selectedAvatar" src="https://i.postimg.cc/qMvvdyYp/download-3.jpg" alt="Avatar">
+        </div>
+        <p style="color: white; margin-top: 15px; font-size: 14px;">Clique para escolher seu avatar</p>
+    </div>
+
+    <div class="right-section">
+        <div class="cadastro-box">
+            <!-- Cabeçalho com Cadastro e Logo -->
+            <div class="cadastro-header">
+                <h1>Cadastro</h1>
+                <a href="index.html" class="logo-box">
+                    <img src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="SkyMilles Logo">
+                </a>
+            </div>
+
+            <div class="form-container">
+                <form id="cadastroForm">
+                    <!-- CAMPO HIDDEN ADICIONADO -->
+                    <input type="hidden" id="fotoPerfilSelecionada" name="fotoPerfilSelecionada" value="avatar1.jpg">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nome Completo</label>
+                            <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nome Usuário</label>
+                            <input type="text" id="nomeUsuario" name="nomeUsuario" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>CPF/RG</label>
+                            <input type="text" id="cpfRg" name="cpfRg" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>CEP</label>
+                            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+                            <small id="cepStatus"
+                                style="color: white; font-size: 11px; margin-top: 5px; display: block;"></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Número</label>
+                            <input type="text" id="numero" name="numero" placeholder="Nº" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Endereço</label>
+                            <input type="text" id="endereco" name="endereco"
+                                placeholder="Será preenchido automaticamente" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Bairro</label>
+                            <input type="text" id="bairro" name="bairro" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Cidade</label>
+                            <input type="text" id="cidade" name="cidade" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <input type="text" id="estado" name="estado" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Complemento (Opcional)</label>
+                            <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco, etc">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Senha</label>
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirme sua senha</label>
+                            <input type="password" id="confirmaSenha" name="confirmaSenha" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="register-btn">CADASTRAR</button>
+
+                    <div class="footer-text">
+                        Deseja ter um plano? <a href="index.html#planos"
+                            style="color: #f8c537; text-decoration: none;">Clique aqui</a><br>
+                        para saber mais.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="cadastro.js"></script>
+</body>
+
+</html>

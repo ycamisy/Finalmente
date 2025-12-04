@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="voos.css">
+    <title>Cadastro de Voos</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <h1>Cadastro de Voos</h1>
+            </div>
+            <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+                src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+        </div>
+
+        <form id="flightForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="origem">Cidade/País de Origem</label>
+                    <select id="origem" required>
+                        <option value="">Selecione...</option>
+                        <option value="São Paulo/BR">São Paulo, Brasil</option>
+                        <option value="Rio de Janeiro/BR">Rio de Janeiro, Brasil</option>
+                        <option value="Brasília/BR">Brasília, Brasil</option>
+                        <option value="Salvador/BR">Salvador, Brasil</option>
+                        <option value="Belo Horizonte/BR">Belo Horizonte, Brasil</option>
+                        <option value="Nova York/EUA">Nova York, EUA</option>
+                        <option value="Londres/UK">Londres, Reino Unido</option>
+                        <option value="Paris/FR">Paris, França</option>
+                        <option value="Tóquio/JP">Tóquio, Japão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="destino">Cidade/País de Destino</label>
+                    <select id="destino" required>
+                        <option value="">Selecione...</option>
+                        <option value="São Paulo/BR">São Paulo, Brasil</option>
+                        <option value="Rio de Janeiro/BR">Rio de Janeiro, Brasil</option>
+                        <option value="Brasília/BR">Brasília, Brasil</option>
+                        <option value="Salvador/BR">Salvador, Brasil</option>
+                        <option value="Belo Horizonte/BR">Belo Horizonte, Brasil</option>
+                        <option value="Nova York/EUA">Nova York, EUA</option>
+                        <option value="Londres/UK">Londres, Reino Unido</option>
+                        <option value="Paris/FR">Paris, França</option>
+                        <option value="Tóquio/JP">Tóquio, Japão</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="codigo">Código do Voo</label>
+                    <input type="text" id="codigo" placeholder="Ex: AA1234">
+                </div>
+
+                <div class="form-group">
+                    <label for="saida">Data/Hora Saída</label>
+                    <input type="datetime-local" id="saida" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="chegada">Data/Hora Chegada</label>
+                    <input type="datetime-local" id="chegada" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequencia">Frequência</label>
+                    <select id="frequencia" required>
+                        <option value="">Selecione...</option>
+                        <option value="Diário">Diário</option>
+                        <option value="Semanal">Semanal</option>
+                        <option value="Quinzenal">Quinzenal</option>
+                        <option value="Mensal">Mensal</option>
+                        <option value="Único">Voo Único</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="companhia">Companhia</label>
+                    <select id="companhia" required>
+                        <option value="">Selecione...</option>
+                        <option value="LATAM">LATAM Airlines</option>
+                        <option value="GOL">GOL Linhas Aéreas</option>
+                        <option value="Azul">Azul Linhas Aéreas</option>
+                        <option value="American">American Airlines</option>
+                        <option value="Delta">Delta Airlines</option>
+                        <option value="United">United Airlines</option>
+                        <option value="Emirates">Emirates</option>
+                        <option value="Lufthansa">Lufthansa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="assentos">Quantidade de Assentos</label>
+                    <input type="number" id="assentos" placeholder="Ex: 180" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status do Voo</label>
+                    <select id="status" required>
+                        <option value="">Selecione...</option>
+                        <option value="Confirmado">Confirmado</option>
+                        <option value="Agendado">Agendado</option>
+                        <option value="Atrasado">Atrasado</option>
+                        <option value="Cancelado">Cancelado</option>
+                        <option value="Embarcando">Embarcando</option>
+                        <option value="Em Voo">Em Voo</option>
+                        <option value="Finalizado">Finalizado</option>
+                    </select>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="modelo">Modelo Aeronave</label>
+                    <input type="text" id="modelo" placeholder="Ex: Boeing 737-800" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor Base do Voo</label>
+                    <input type="text" id="valor" placeholder="R$ 0,00" required>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+                <button type="submit" class="btn-salvar">Salvar</button>
+                <button onclick="location.href='visuVoos.html'">Visualizar Voos</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="voos.js"></script>
+</body>
+</html>

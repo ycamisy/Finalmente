@@ -1,0 +1,1142 @@
+/* ==================== SEÇÃO DE PACOTES ==================== */
+.pacotes-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 40px;
+}
+
+.section-header h2 {
+    font-size: 42px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.section-header p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==================== FILTROS ==================== */
+.filtros-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filtro-group label {
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.filtro-group select,
+.filtro-group input {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    min-width: 150px;
+    cursor: pointer;
+    outline: none;
+}
+
+.filtro-group input:focus,
+.filtro-group select:focus {
+    box-shadow: 0 0 0 3px rgba(248, 197, 55, 0.5);
+}
+
+.btn-filtrar {
+    padding: 12px 30px;
+    background: #f8c537;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+.btn-filtrar:hover {
+    background: #e6b325;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Botão Limpar Filtros */
+.btn-limpar {
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.btn-limpar:hover {
+    background: white;
+    color: #4d9fb8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes no container de filtros para acomodar os dois botões */
+.filtros-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajuste para os botões ficarem lado a lado no desktop */
+@media screen and (min-width: 768px) {
+    .btn-filtrar,
+    .btn-limpar {
+        margin-top: 20px;
+        min-width: 150px;
+    }
+}
+
+/* Responsivo - Mobile */
+@media screen and (max-width: 767px) {
+    .btn-limpar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .btn-filtrar {
+        width: 100%;
+    }
+}
+
+/* Garantir que os pacotes das páginas 2 e 3 comecem ocultos */
+.pacote-card.pagina-2,
+.pacote-card.pagina-3 {
+    display: none;
+}
+
+/* Animação suave ao mostrar/ocultar pacotes */
+.pacote-card {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Melhorias visuais nos badges */
+.pacote-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f8c537;
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pacote-badge.promocao {
+    background: linear-gradient(135deg, #ff5252, #e91e63);
+    color: white;
+}
+
+.pacote-badge.popular {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.pacote-badge.premium {
+    background: linear-gradient(135deg, #9c27b0, #673ab7);
+    color: white;
+}
+
+/* Hover effect nos cards */
+.pacote-card {
+    transition: all 0.3s ease;
+}
+
+.pacote-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsividade aprimorada para o grid de pacotes */
+@media screen and (min-width: 1400px) {
+    .pacotes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .pacotes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Melhorias no botão Ver Pacote */
+.btn-ver-pacote {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ver-pacote::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-ver-pacote:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Contador de pacotes encontrados */
+.pacotes-contador {
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Loading spinner para quando aplicar filtros */
+.loading-spinner {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: white;
+    font-size: 18px;
+}
+
+.loading-spinner.active {
+    display: block;
+}
+
+.loading-spinner::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Mensagem de nenhum pacote encontrado */
+.no-results {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: white;
+    font-size: 20px;
+    grid-column: 1 / -1;
+}
+
+.no-results.active {
+    display: block;
+}
+
+.no-results svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+/* Melhorias na paginação */
+.paginacao button {
+    min-width: 40px;
+    height: 40px;
+    padding: 10px;
+}
+
+.paginacao button:not(:disabled):hover {
+    transform: translateY(-2px);
+}
+
+.paginacao button.active {
+    background: #f8c537;
+    border-color: #f8c537;
+    color: #000;
+    box-shadow: 0 4px 12px rgba(248, 197, 55, 0.4);
+}
+
+/* Tooltip nos badges */
+.pacote-badge {
+    position: relative;
+    cursor: help;
+}
+
+.pacote-badge:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+    margin-bottom: 5px;
+    z-index: 100;
+}
+
+/* Indicador de página atual */
+.paginacao {
+    position: relative;
+}
+
+
+/* Transição suave ao aplicar filtros */
+.pacotes-grid.filtering {
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+/* Badge de desconto */
+.pacote-desconto {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: #ff5252;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    z-index: 9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Melhorias nos detalhes do pacote */
+.detalhe-item {
+    background: rgba(77, 159, 184, 0.05);
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.detalhe-item:hover {
+    background: rgba(77, 159, 184, 0.15);
+    transform: translateX(5px);
+}
+
+/* Preço em destaque */
+.preco-valor {
+    color: #2c5f7f;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Separador visual entre páginas */
+.page-separator {
+    display: none;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f8c537, transparent);
+    margin: 40px 0;
+    grid-column: 1 / -1;
+}
+
+
+/* ==================== GRID DE PACOTES ==================== */
+.pacotes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);  
+    gap: 30px;
+    margin-bottom: 40px;
+    max-width: 900px;  
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pacote-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.pacote-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+
+.pacote-imagem-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.pacote-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.pacote-card:hover .pacote-imagem {
+    transform: scale(1.1);
+}
+
+.pacote-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #f8c537;
+    color: #000;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    z-index: 10;
+}
+
+.pacote-badge.promocao {
+    background: #ff5252;
+    color: white;
+}
+
+.pacote-badge.popular {
+    background: #4caf50;
+    color: white;
+}
+
+.pacote-badge.premium {
+    background: #9c27b0;
+    color: white;
+}
+
+.pacote-conteudo {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.pacote-destino {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.pacote-destino svg {
+    width: 20px;
+    height: 20px;
+    fill: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.pacote-destino h3 {
+    font-size: 24px;
+    color: #2c5f7f;
+    margin: 0;
+}
+
+.pacote-descricao {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 60px;
+}
+
+.pacote-detalhes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.detalhe-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #333;
+}
+
+.detalhe-item svg {
+    width: 16px;
+    height: 16px;
+    fill: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.pacote-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+    margin-top: auto;
+}
+
+.pacote-preco {
+    display: flex;
+    flex-direction: column;
+}
+
+.preco-label {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.preco-valor {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c5f7f;
+    margin-bottom: 3px;
+}
+
+.preco-parcela {
+    font-size: 12px;
+    color: #666;
+}
+
+.btn-ver-pacote {
+    padding: 12px 25px;
+    background: #4d9fb8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btn-ver-pacote:hover {
+    background: #2c5f7f;
+    transform: scale(1.05);
+}
+
+/* ==================== SEÇÃO FLUTUANTE - PACOTES ==================== */
+/* ==================== MODAL DE DETALHES DO PACOTE ==================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-pacote {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    background: white;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal-pacote.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    position: relative;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+}
+
+.modal-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+    transition: all 0.3s;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+    background: #f44336;
+    color: white;
+}
+
+.modal-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #f8c537;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-badge.promocao {
+    background: linear-gradient(135deg, #ff5252, #e91e63);
+    color: white;
+}
+
+.modal-badge.popular {
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    color: white;
+}
+
+.modal-badge.premium {
+    background: linear-gradient(135deg, #9c27b0, #673ab7);
+    color: white;
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-destino {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-destino svg {
+    width: 30px;
+    height: 30px;
+    fill: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.modal-destino h2 {
+    font-size: 32px;
+    color: #2c5f7f;
+    margin: 0;
+}
+
+.modal-descricao {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.modal-info-item {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s;
+}
+
+.modal-info-item:hover {
+    background: rgba(77, 159, 184, 0.1);
+    transform: translateY(-5px);
+}
+
+.modal-info-item svg {
+    width: 30px;
+    height: 30px;
+    fill: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.modal-info-content h4 {
+    font-size: 14px;
+    color: #999;
+    margin: 0 0 5px 0;
+    font-weight: normal;
+}
+
+.modal-info-content p {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+.modal-section {
+    margin-bottom: 30px;
+}
+
+.modal-section h3 {
+    font-size: 22px;
+    color: #2c5f7f;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-section h3 svg {
+    width: 24px;
+    height: 24px;
+    fill: #4d9fb8;
+}
+
+.modal-inclusos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+}
+
+.incluso-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+}
+
+.incluso-item svg {
+    width: 20px;
+    height: 20px;
+    fill: #4caf50;
+    flex-shrink: 0;
+}
+
+.modal-footer {
+    border-top: 2px solid #f0f0f0;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: #f9f9f9;
+    border-radius: 0 0 20px 20px;
+}
+
+.modal-preco-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-preco-label {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.modal-preco-valor {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2c5f7f;
+    margin-bottom: 5px;
+}
+
+.modal-preco-parcela {
+    font-size: 14px;
+    color: #666;
+}
+
+.modal-acoes {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-modal {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 16px;
+}
+
+.btn-favoritar {
+    background: white;
+    border: 2px solid #4d9fb8;
+    color: #4d9fb8;
+}
+
+.btn-favoritar:hover {
+    background: #4d9fb8;
+    color: white;
+}
+
+.btn-reservar {
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    color: white;
+    box-shadow: 0 4px 15px rgba(77, 159, 184, 0.4);
+}
+
+.btn-reservar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77, 159, 184, 0.6);
+}
+
+/* Responsividade do Modal */
+@media screen and (max-width: 768px) {
+    .modal-pacote {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-header {
+        height: 200px;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .modal-destino h2 {
+        font-size: 24px;
+    }
+    
+    .modal-info-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .modal-inclusos {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+    
+    .modal-acoes {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-modal {
+        width: 100%;
+    }
+    
+    .modal-preco-valor {
+        font-size: 28px;
+    }
+}
+
+
+/* ==================== PAGINAÇÃO ==================== */
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 40px auto;  
+    padding-bottom: 40px;
+    width: 100%;  
+    max-width: 600px; 
+}
+
+.paginacao button {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.paginacao button:hover {
+    background: white;
+    color: #4d9fb8;
+}
+
+.paginacao button.active {
+    background: #f8c537;
+    border-color: #f8c537;
+    color: #000;
+}
+
+.paginacao button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+
+/* Telas médias (768px a 1199px) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    #header {
+        padding: 10px 20px;
+    }
+
+    #NomeMarca {
+        font-size: 32px;
+    }
+
+    .pacotes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        max-width: 900px;  /* ADICIONADO */
+    
+}
+}
+
+/* MOBILE (até 767px) */
+@media screen and (max-width: 767px) {
+    body {
+        padding-top: 80px;
+    }
+
+    #header {
+        padding: 15px 20px;
+    }
+
+    #Logo {
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    #NomeMarca {
+        font-size: 24px;
+    }
+
+    .search-container,
+    #main-nav {
+        display: none;
+    }
+
+    .header-right {
+        margin-left: auto;
+        gap: 15px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .perfil-container {
+        display: none;
+    }
+
+    .dropdown-menu {
+        right: 0;
+        top: 65px;
+        width: 150px;
+    }
+
+    .dropdown-menu button {
+        padding: 18px 15px;
+        font-size: 15px;
+    }
+
+    /* Pacotes Mobile */
+    .pacotes-section {
+        padding: 30px 10px;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .section-header p {
+        font-size: 16px;
+    }
+
+    .pacotes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .filtros-container {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 20px;
+    }
+
+    .filtro-group {
+        width: 100%;
+    }
+
+    .filtro-group select,
+    .filtro-group input {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .btn-filtrar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .pacote-card {
+        max-width: 100%;
+    }
+
+    .pacote-detalhes {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .pacote-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .btn-ver-pacote {
+        width: 100%;
+    }
+
+    .paginacao {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .paginacao button {
+        padding: 8px 15px;
+        font-size: 13px;
+    }
+}
+
+/* Telas muito pequenas (abaixo de 480px) */
+@media screen and (max-width: 479px) {
+    #header {
+        padding: 10px;
+    }
+
+    #NomeMarca {
+        font-size: 20px;
+    }
+
+    #Logo {
+        height: 40px;
+        margin-right: 8px;
+    }
+
+    .section-header h2 {
+        font-size: 26px;
+    }
+
+    .pacote-destino h3 {
+        font-size: 20px;
+    }
+
+    .preco-valor {
+        font-size: 24px;
+    }
+
+    .pacote-imagem-container {
+        height: 200px;
+    }
+}

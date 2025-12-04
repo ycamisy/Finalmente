@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadCliente.css">
+    <title>Cadastro de Pacotes</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <h1>Cadastro de Pacotes</h1>
+            </div>
+            <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+                src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+        </div>
+
+        <form id="pacoteForm">
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="nomePacote">Nome do Pacote</label>
+                    <input type="text" id="nomePacote" placeholder="Ex: Semana em Paris" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="destino">Destino</label>
+                    <select id="destino" required>
+                        <option value="">Selecione...</option>
+                        <option value="São Paulo/BR">São Paulo, Brasil</option>
+                        <option value="Rio de Janeiro/BR">Rio de Janeiro, Brasil</option>
+                        <option value="Brasília/BR">Brasília, Brasil</option>
+                        <option value="Salvador/BR">Salvador, Brasil</option>
+                        <option value="Belo Horizonte/BR">Belo Horizonte, Brasil</option>
+                        <option value="Florianópolis/BR">Florianópolis, Brasil</option>
+                        <option value="Porto Seguro/BR">Porto Seguro, Brasil</option>
+                        <option value="Gramado/BR">Gramado, Brasil</option>
+                        <option value="Nova York/EUA">Nova York, EUA</option>
+                        <option value="Miami/EUA">Miami, EUA</option>
+                        <option value="Orlando/EUA">Orlando, EUA</option>
+                        <option value="Paris/FR">Paris, França</option>
+                        <option value="Londres/UK">Londres, Reino Unido</option>
+                        <option value="Dubai/UAE">Dubai, Emirados Árabes</option>
+                        <option value="Tóquio/JP">Tóquio, Japão</option>
+                        <option value="Barcelona/ES">Barcelona, Espanha</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="duracao">Duração (Dias)</label>
+                    <input type="number" id="duracao" placeholder="Ex: 7" min="1" max="60" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataInicio">Data de Início</label>
+                    <input type="date" id="dataInicio" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dataFim">Data de Término</label>
+                    <input type="date" id="dataFim" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo">Tipo de Pacote</label>
+                    <select id="tipo" required>
+                        <option value="">Selecione...</option>
+                        <option value="Romantic">💕 Lua de Mel</option>
+                        <option value="Aventura">🏔️ Aventura</option>
+                        <option value="Praias">🏖️ Praias</option>
+                        <option value="Cultura">🏛️ Cultura</option>
+                        <option value="Negocios">💼 Negócios</option>
+                        <option value="Familia">👨‍👩‍👧‍👦 Família</option>
+                        <option value="Luxo">👑 Luxo</option>
+                        <option value="Economico">💰 Econômico</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="categoriaHotel">Categoria Hotel</label>
+                    <select id="categoriaHotel" required>
+                        <option value="">Selecione...</option>
+                        <option value="5 Estrelas">⭐⭐⭐⭐⭐ 5 Estrelas</option>
+                        <option value="4 Estrelas">⭐⭐⭐⭐ 4 Estrelas</option>
+                        <option value="3 Estrelas">⭐⭐⭐ 3 Estrelas</option>
+                        <option value="2 Estrelas">⭐⭐ 2 Estrelas</option>
+                        <option value="Pousada">🏡 Pousada</option>
+                        <option value="Resort">🏝️ Resort</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="companhiaAerea">Companhia Aérea</label>
+                    <select id="companhiaAerea" required>
+                        <option value="">Selecione...</option>
+                        <option value="LATAM">LATAM Airlines</option>
+                        <option value="GOL">GOL Linhas Aéreas</option>
+                        <option value="Azul">Azul Linhas Aéreas</option>
+                        <option value="American">American Airlines</option>
+                        <option value="Delta">Delta Airlines</option>
+                        <option value="United">United Airlines</option>
+                        <option value="Emirates">Emirates</option>
+                        <option value="Lufthansa">Lufthansa</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="valorBase">Valor Base por Pessoa</label>
+                    <input type="text" id="valorBase" placeholder="R$ 0,00" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="desconto">Desconto (%)</label>
+                    <input type="number" id="desconto" placeholder="0" min="0" max="100" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="vagas">Número de Vagas</label>
+                    <input type="number" id="vagas" placeholder="Ex: 50" min="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vagasDisponivel">Vagas Disponíveis</label>
+                    <input type="number" id="vagasDisponivel" placeholder="Ex: 50" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" required>
+                        <option value="">Selecione...</option>
+                        <option value="Ativo">✅ Ativo</option>
+                        <option value="Inativo">❌ Inativo</option>
+                        <option value="Cancelado">🚫 Cancelado</option>
+                        <option value="Lotado">📋 Lotado</option>
+                    </select>
+                </div>
+
+                <div class="form-group span-3">
+                    <label>Inclusos no Pacote</label>
+                    <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="voo" name="inclusos">
+                            <label for="voo">✈️ Voo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="hospedagem" name="inclusos">
+                            <label for="hospedagem">🏨 Hospedagem</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cafeManha" name="inclusos">
+                            <label for="cafeManha">🍳 Café da Manhã</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="almoco" name="inclusos">
+                            <label for="almoco">🍽️ Almoço</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="jantar" name="inclusos">
+                            <label for="jantar">🍷 Jantar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="transporte" name="inclusos">
+                            <label for="transporte">🚗 Transporte</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="guia" name="inclusos">
+                            <label for="guia">👨‍🏫 Guia Turístico</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="seguro" name="inclusos">
+                            <label for="seguro">🛡️ Seguro Viagem</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group span-3">
+                    <label for="descricao">Descrição do Pacote</label>
+                    <textarea id="descricao" placeholder="Descreva os detalhes principais do pacote, atrações incluídas, itinerário, etc..."></textarea>
+                </div>
+
+                <div class="form-group span-3">
+                    <label for="observacoes">Observações Adicionais</label>
+                    <textarea id="observacoes" placeholder="Informações complementares sobre o pacote..."></textarea>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+                <button type="submit" class="btn-salvar" id="btnCadastrar">Salvar Pacote</button>
+                <button type="button" class="btn-visualizar" onclick="location.href='visuPacote.html'">Visualizar Pacotes</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="cadPacote.js"></script>
+</body>
+</html>

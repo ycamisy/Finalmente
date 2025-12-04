@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadHotel.css">
+    <title>Cadastro de Hotéis e Quartos</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <h1>Cadastro de Hotéis e Quartos</h1>
+            </div>
+            <a href="http://localhost/dashboard/SkyMilles/adm.html">
+                <img class="logo-img" src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles">
+            </a>
+        </div>
+
+        <form id="hotelForm">
+            <div class="form-grid">
+                <!-- Nome do Hotel -->
+                <div class="form-group full-width">
+                    <label for="nomeHotel">Nome do Hotel</label>
+                    <input type="text" id="nomeHotel" placeholder="Ex: Hotel Paradise Resort" required>
+                </div>
+
+                <!-- Categoria -->
+                <div class="form-group">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria" required>
+                        <option value="">Selecione...</option>
+                        <option value="5 Estrelas">⭐⭐⭐⭐⭐ 5 Estrelas</option>
+                        <option value="4 Estrelas">⭐⭐⭐⭐ 4 Estrelas</option>
+                        <option value="3 Estrelas">⭐⭐⭐ 3 Estrelas</option>
+                        <option value="2 Estrelas">⭐⭐ 2 Estrelas</option>
+                        <option value="Pousada">🏡 Pousada</option>
+                        <option value="Resort">🏝️ Resort</option>
+                    </select>
+                </div>
+
+                <!-- País -->
+                <div class="form-group">
+                    <label for="pais">País</label>
+                    <select id="pais" required>
+                        <option value="">Selecione o país...</option>
+                        <option value="BR" data-formato="00000-000" data-placeholder="12345-678">🇧🇷 Brasil</option>
+                        <option value="US" data-formato="00000" data-placeholder="12345">🇺🇸 Estados Unidos</option>
+                        <option value="FR" data-formato="00000" data-placeholder="75001">🇫🇷 França</option>
+                        <option value="UK" data-formato="AA0A 0AA" data-placeholder="SW1A 1AA">🇬🇧 Reino Unido</option>
+                        <option value="IT" data-formato="00000" data-placeholder="00118">🇮🇹 Itália</option>
+                        <option value="ES" data-formato="00000" data-placeholder="28001">🇪🇸 Espanha</option>
+                        <option value="PT" data-formato="0000-000" data-placeholder="1000-001">🇵🇹 Portugal</option>
+                        <option value="DE" data-formato="00000" data-placeholder="10115">🇩🇪 Alemanha</option>
+                        <option value="AR" data-formato="A0000AAA" data-placeholder="C1002AAR">🇦🇷 Argentina</option>
+                        <option value="MX" data-formato="00000" data-placeholder="01000">🇲🇽 México</option>
+                        <option value="CA" data-formato="A0A 0A0" data-placeholder="K1A 0B1">🇨🇦 Canadá</option>
+                        <option value="JP" data-formato="000-0000" data-placeholder="100-0001">🇯🇵 Japão</option>
+                        <option value="CN" data-formato="000000" data-placeholder="100000">🇨🇳 China</option>
+                        <option value="AE" data-formato="" data-placeholder="">🇦🇪 Emirados Árabes</option>
+                        <option value="AU" data-formato="0000" data-placeholder="2000">🇦🇺 Austrália</option>
+                        <option value="NZ" data-formato="0000" data-placeholder="1010">🇳🇿 Nova Zelândia</option>
+                        <option value="ZA" data-formato="0000" data-placeholder="0001">🇿🇦 África do Sul</option>
+                        <option value="IN" data-formato="000000" data-placeholder="110001">🇮🇳 Índia</option>
+                        <option value="TH" data-formato="00000" data-placeholder="10110">🇹🇭 Tailândia</option>
+                        <option value="SG" data-formato="000000" data-placeholder="018956">🇸🇬 Singapura</option>
+                    </select>
+                </div>
+
+                <!-- CEP/Código Postal -->
+                <div class="form-group">
+                    <label for="cep">
+                        <span id="labelCep">CEP / Código Postal</span>
+                    </label>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="cep-input-group" style="flex: 1;">
+                            <input type="text" id="cep" placeholder="Digite o CEP" disabled>
+                            <button type="button" id="btnBuscarCep" class="btn-buscar-cep" disabled title="Buscar endereço">
+                                🔍
+                            </button>
+                        </div>
+                        <span class="loading-cep" id="loadingCep" style="display: none;">🔄</span>
+                    </div>
+                    <small id="formatoCep" class="formato-info"></small>
+                </div>
+
+                <!-- Estado/Província -->
+                <div class="form-group">
+                    <label for="estado">Estado / Província</label>
+                    <input type="text" id="estado" placeholder="Ex: São Paulo">
+                </div>
+
+                <!-- Cidade -->
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" placeholder="Ex: São Paulo" required>
+                </div>
+
+                <!-- Bairro/Distrito -->
+                <div class="form-group">
+                    <label for="bairro">Bairro / Distrito</label>
+                    <input type="text" id="bairro" placeholder="Ex: Jardins">
+                </div>
+
+                <!-- Endereço -->
+                <div class="form-group full-width">
+                    <label for="endereco">Endereço Completo</label>
+                    <input type="text" id="endereco" placeholder="Ex: Av. Paulista, 1000" required>
+                </div>
+
+                <!-- Complemento -->
+                <div class="form-group">
+                    <label for="complemento">Complemento</label>
+                    <input type="text" id="complemento" placeholder="Ex: Bloco A, Apto 501">
+                </div>
+
+                <!-- Tipo de Quarto -->
+                <div class="form-group">
+                    <label for="tipoQuarto">Tipo de Quarto</label>
+                    <select id="tipoQuarto" required>
+                        <option value="">Selecione...</option>
+                        <option value="Standard">Standard</option>
+                        <option value="Luxo">Luxo</option>
+                        <option value="Suíte">Suíte</option>
+                        <option value="Suíte Master">Suíte Master</option>
+                        <option value="Presidencial">Presidencial</option>
+                        <option value="Familiar">Familiar</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                    </select>
+                </div>
+
+                <!-- Número do Quarto -->
+                <div class="form-group">
+                    <label for="numeroQuarto">Número do Quarto</label>
+                    <input type="text" id="numeroQuarto" placeholder="Ex: 501">
+                </div>
+
+                <!-- Capacidade -->
+                <div class="form-group">
+                    <label for="capacidade">Capacidade de Hóspedes</label>
+                    <input type="number" id="capacidade" placeholder="Ex: 2" min="1" max="10" required>
+                </div>
+
+                <!-- Valor da Diária -->
+                <div class="form-group">
+                    <label for="valorDiaria">Valor da Diária</label>
+                    <input type="text" id="valorDiaria" placeholder="R$ 0,00" required>
+                </div>
+
+                <!-- Disponibilidade -->
+                <div class="form-group">
+                    <label for="disponibilidade">Disponibilidade</label>
+                    <select id="disponibilidade" required>
+                        <option value="">Selecione...</option>
+                        <option value="Disponível">✅ Disponível</option>
+                        <option value="Ocupado">❌ Ocupado</option>
+                        <option value="Reservado">📅 Reservado</option>
+                        <option value="Manutenção">🔧 Manutenção</option>
+                        <option value="Limpeza">🧹 Limpeza</option>
+                    </select>
+                </div>
+
+                <!-- Data Check-in -->
+                <div class="form-group">
+                    <label for="dataCheckIn">Data Check-in</label>
+                    <input type="date" id="dataCheckIn">
+                </div>
+
+                <!-- Data Check-out -->
+                <div class="form-group">
+                    <label for="dataCheckOut">Data Check-out</label>
+                    <input type="date" id="dataCheckOut">
+                </div>
+
+                <!-- Café da Manhã -->
+                <div class="form-group">
+                    <label for="cafeManha">Café da Manhã</label>
+                    <select id="cafeManha" required>
+                        <option value="">Selecione...</option>
+                        <option value="Incluso">Incluso</option>
+                        <option value="Não Incluso">Não Incluso</option>
+                        <option value="Opcional">Opcional (+R$ 50)</option>
+                    </select>
+                </div>
+
+                <!-- Comodidades -->
+                <div class="form-group span-3">
+                    <label>Comodidades do Quarto</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="arCondicionado" name="comodidades">
+                            <label for="arCondicionado">❄️ Ar-condicionado</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="wifi" name="comodidades">
+                            <label for="wifi">📶 Wi-Fi</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="tv" name="comodidades">
+                            <label for="tv">📺 TV</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="minibar" name="comodidades">
+                            <label for="minibar">🍷 Minibar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cofre" name="comodidades">
+                            <label for="cofre">🔒 Cofre</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="varanda" name="comodidades">
+                            <label for="varanda">🌅 Varanda</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="banheira" name="comodidades">
+                            <label for="banheira">🛁 Banheira</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="servicoQuarto" name="comodidades">
+                            <label for="servicoQuarto">🍽️ Serviço de Quarto</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Observações -->
+                <div class="form-group span-3">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" placeholder="Informações adicionais sobre o quarto ou hotel..."></textarea>
+                </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="button-group">
+                <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
+                <button type="submit" class="btn-salvar">Salvar</button>
+                <button type="button" class="btn-visualizar" onclick="location.href='visuHoteis.html'">Visualizar Hotéis</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="cadHotel.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+[04-Dec-2025 03:02:43 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:02:43 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:02:43 Europe/Berlin] Method: GET
+[04-Dec-2025 03:02:43 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:02:43 Europe/Berlin] Action: listar, Resource: hoteis
+[04-Dec-2025 03:02:43 Europe/Berlin] Method: GET
+[04-Dec-2025 03:02:43 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:02:43 Europe/Berlin] Action: listar, Resource: hoteis
+[04-Dec-2025 03:02:52 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:02:52 Europe/Berlin] Method: GET
+[04-Dec-2025 03:02:52 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=pacotes
+[04-Dec-2025 03:02:52 Europe/Berlin] Action: listar, Resource: pacotes
+[04-Dec-2025 03:15:58 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:15:58 Europe/Berlin] Method: GET
+[04-Dec-2025 03:15:58 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=pacotes
+[04-Dec-2025 03:15:58 Europe/Berlin] Action: listar, Resource: pacotes
+[04-Dec-2025 03:16:05 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:16:05 Europe/Berlin] Method: GET
+[04-Dec-2025 03:16:05 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:16:05 Europe/Berlin] Action: listar, Resource: hoteis
+[04-Dec-2025 03:16:05 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:16:05 Europe/Berlin] Method: GET
+[04-Dec-2025 03:16:05 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:16:05 Europe/Berlin] Action: listar, Resource: hoteis
+[04-Dec-2025 03:16:08 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:16:08 Europe/Berlin] === REQUISIÇÃO API ===
+[04-Dec-2025 03:16:08 Europe/Berlin] Method: GET
+[04-Dec-2025 03:16:08 Europe/Berlin] Method: GET
+[04-Dec-2025 03:16:08 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:16:08 Europe/Berlin] URI: /dashboard/SkyMilles/api.php?action=listar&resource=hoteis
+[04-Dec-2025 03:16:08 Europe/Berlin] Action: listar, Resource: hoteis
+[04-Dec-2025 03:16:08 Europe/Berlin] Action: listar, Resource: hoteis

@@ -1,0 +1,782 @@
+/* Usar estilos base (header, footer, etc) - igual passagens.css/conheca.css */
+
+h2.section-title {
+    font-size: 40px;
+    color: #2c5f7f;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 40px;
+    text-align: center;
+}
+p{
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* ==================== HERO SUPORTE ==================== */
+.hero-section {
+    position: relative;
+    min-height: 500px;
+    background: linear-gradient(135deg, #4d9fb8 0%, #2c5f7f 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -100px;
+    padding: 150px 20px 80px;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(77, 159, 184, 0.8) 0%, rgba(44, 95, 127, 0.8) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.hero-content h1 span {
+    color: #f8c537;
+}
+
+.hero-content p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 30px;
+}
+
+.hero-search {
+    max-width: 700px;
+    width: 100%;
+    background: white;
+    border-radius: 50px;
+    padding: 8px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    margin: 30px auto 0;
+    position: relative;
+    z-index: 3;
+}
+
+.hero-search svg {
+    width: 28px;
+    height: 28px;
+    color: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.hero-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 15px 0;
+    font-family: inherit;
+}
+
+/* ==================== CANAIS DE ATENDIMENTO ==================== */
+.canais-section {
+    background: white;
+    padding: 80px 20px;
+}
+
+.canais-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.canal-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 35px 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.canal-card:hover {
+    border-color: #4d9fb8;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(77,159,184,0.2);
+}
+
+.canal-card.destaque {
+    border-color: #f8c537;
+    background: linear-gradient(135deg, #fff9e6, #ffffff);
+}
+
+.canal-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    transition: all 0.3s ease;
+}
+
+.canal-icon svg {
+    width: 35px;
+    height: 35px;
+    color: white;
+}
+
+.canal-icon.whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+}
+
+.canal-icon.email {
+    background: linear-gradient(135deg, #EA4335, #C5221F);
+}
+
+.canal-icon.telefone {
+    background: linear-gradient(135deg, #4285F4, #1967D2);
+}
+
+.canal-icon.chat {
+    background: linear-gradient(135deg, #f8c537, #e6b325);
+}
+
+.canal-card:hover .canal-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.canal-card h3 {
+    font-size: 22px;
+    color: #2c5f7f;
+    margin: 0;
+}
+
+.canal-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.canal-info {
+    font-size: 15px;
+    font-weight: 600;
+    color: #4d9fb8;
+}
+
+.canal-status {
+    color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn-canal {
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    margin-top: auto;
+}
+
+.btn-canal:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(77,159,184,0.4);
+}
+
+.btn-destaque {
+    background: linear-gradient(135deg, #f8c537, #e6b325);
+    color: #2c5f7f;
+}
+
+/* ==================== CATEGORIAS DE AJUDA ==================== */
+.categorias-ajuda-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+    padding: 80px 20px;
+}
+
+.categorias-ajuda-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.categoria-ajuda-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.categoria-ajuda-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.categoria-ajuda-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.categoria-ajuda-card:hover .categoria-ajuda-icon {
+    background: linear-gradient(135deg, #f8c537, #e6b325);
+    transform: scale(1.1) rotate(5deg);
+}
+
+.categoria-ajuda-icon svg {
+    width: 35px;
+    height: 35px;
+    color: white;
+}
+
+.categoria-ajuda-card h3 {
+    font-size: 24px;
+    color: #2c5f7f;
+    margin-bottom: 12px;
+}
+
+.categoria-ajuda-card p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.artigos-count {
+    display: inline-block;
+    background: #f0f8fb;
+    color: #4d9fb8;
+    padding: 6px 16px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* ==================== MODAL DE CATEGORIA ==================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9998;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-categoria {
+    background: white;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-overlay.active .modal-categoria {
+    transform: scale(1);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    padding: 30px 40px;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.modal-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.modal-header h2 {
+    color: white;
+    font-size: 28px;
+    margin: 0;
+    text-align: left;
+}
+
+.modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.modal-close svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-description {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    text-align: left;
+}
+
+.artigos-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.artigo-item {
+    background: #f8f9fa;
+    padding: 20px 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.artigo-item:hover {
+    background: #f0f8fb;
+    border-color: #4d9fb8;
+    transform: translateX(5px);
+}
+
+.artigo-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.artigo-icon svg {
+    width: 22px;
+    height: 22px;
+    color: white;
+}
+
+.artigo-content {
+    flex: 1;
+}
+
+.artigo-content h4 {
+    font-size: 17px;
+    color: #2c5f7f;
+    margin: 0 0 5px 0;
+}
+
+.artigo-content p {
+    font-size: 14px;
+    color: #999;
+    margin: 0;
+    text-align: left;
+}
+
+.modal-footer {
+    padding: 25px 40px;
+    background: #f8f9fa;
+    border-radius: 0 0 25px 25px;
+    text-align: center;
+}
+
+.modal-footer p {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 20px 0;
+}
+
+.btn-contato-modal {
+    background: linear-gradient(135deg, #f8c537, #e6b325);
+    color: #2c5f7f;
+    border: none;
+    padding: 14px 35px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-contato-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(248, 197, 55, 0.4);
+}
+
+.btn-contato-modal svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==================== FORMULÁRIO DE CONTATO ==================== */
+.formulario-section {
+    background: white;
+    padding: 80px 20px;
+}
+
+.formulario-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.formulario-info h2 {
+    font-size: 36px;
+    color: #2c5f7f;
+    margin-bottom: 20px;
+}
+
+.formulario-info > p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.info-destaque {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 25px;
+    background: #f0f8fb;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.info-destaque svg {
+    width: 40px;
+    height: 40px;
+    color: #4d9fb8;
+    flex-shrink: 0;
+}
+
+.info-destaque strong {
+    display: block;
+    color: #2c5f7f;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.info-destaque p {
+    font-size: 15px;
+    color: #666;
+    margin: 0;
+}
+
+.formulario-contato {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4d9fb8;
+    box-shadow: 0 0 0 3px rgba(77,159,184,0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn-enviar {
+    width: 100%;
+    background: linear-gradient(135deg, #4d9fb8, #2c5f7f);
+    color: white;
+    border: none;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+    margin-top: 10px;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(77,159,184,0.4);
+}
+
+.btn-enviar svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ==================== STATUS DO SISTEMA ==================== */
+.status-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8f4f8 100%);
+    padding: 80px 20px;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.status-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.status-card.operacional {
+    border-color: #27ae60;
+}
+
+.status-card.manutencao {
+    border-color: #f39c12;
+}
+
+.status-card.problema {
+    border-color: #e74c3c;
+}
+
+.status-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.status-header svg {
+    width: 28px;
+    height: 28px;
+}
+
+.status-card.operacional svg {
+    color: #27ae60;
+}
+
+.status-badge {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.status-card.operacional .status-badge {
+    background: #27ae60;
+    color: white;
+}
+
+.status-card h3 {
+    font-size: 20px;
+    color: #2c5f7f;
+    margin-bottom: 10px;
+}
+
+.status-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ==================== RESPONSIVIDADE ==================== */
+@media screen and (max-width: 1199px) {
+    .canais-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .categorias-ajuda-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .status-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero-section {
+        padding: 120px 20px 60px;
+        min-height: 400px;
+    }
+
+    .hero-section::before {
+        width: 200px;
+        height: 200px;
+        opacity: 0.2;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .hero-search {
+        padding: 6px 20px;
+    }
+    
+    .hero-search input {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .hero-section {
+        padding: 100px 15px 50px;
+        min-height: 350px;
+    }
+
+    .hero-section::before {
+        width: 150px;
+        height: 150px;
+        opacity: 0.2;
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+    }
+}

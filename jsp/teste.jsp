@@ -427,7 +427,7 @@
             ?>
             
             <div style="text-align: center; margin-top: 30px;">
-                <a href="index.html" class="btn">🏠 Voltar para Home</a>
+                <a href="./index.jsp" class="btn">🏠 Voltar para Home</a>
                 <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="btn" style="background: #764ba2;">🔄 Recarregar Teste</a>
             </div>
         </div>

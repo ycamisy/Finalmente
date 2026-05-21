@@ -12,7 +12,7 @@
             <div class="logo-section">
                 <h1>Cadastro de Voos</h1>
             </div>
-            <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+            <a href="http://localhost/dashboard/SkyMilles/adm.jsp"><img class="logo-img"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
         </div>
 
@@ -125,11 +125,11 @@
             <div class="button-group">
                 <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 <button type="submit" class="btn-salvar">Salvar</button>
-                <button onclick="location.href='visuVoos.html'">Visualizar Voos</button>
+                <button onclick="location.href='./visuVoos.jsp'">Visualizar Voos</button>
             </div>
         </form>
     </div>
 
-    <script src="voos.js"></script>
+    <script src="../js/voos.js"></script>
 </body>
 </html>

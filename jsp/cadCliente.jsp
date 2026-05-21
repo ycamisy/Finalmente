@@ -12,7 +12,7 @@
             <div class="logo-section">
                 <h1>Cadastro de Clientes</h1>
             </div>
-            <a href="http://localhost/dashboard/SkyMilles/adm.html">
+            <a href="http://localhost/dashboard/SkyMilles/adm.jsp">
                 <img class="logo-img" src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="SkyMilles">
             </a>
         </div>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="checkbox-group">
                         <input type="checkbox" id="aceitarTermos" name="preferencias" required>
-                        <label for="aceitarTermos">Aceito os <a href="termos.html" target="_blank">termos de serviço</a> e <a href="privacidade.html" target="_blank">política de privacidade</a></label>
+                        <label for="aceitarTermos">Aceito os <a href="termos.jsp" target="_blank">termos de serviço</a> e <a href="./privacidade.jsp" target="_blank">política de privacidade</a></label>
                     </div>
                 </div>
 
@@ -196,12 +196,12 @@
             <div class="button-group">
                 <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 <button type="submit" class="btn-salvar" id="btnCadastrar">Salvar Cliente</button>
-                <button type="button" class="btn-visualizar" onclick="location.href='visuCliente.html'">Visualizar Clientes</button>
+                <button type="button" class="btn-visualizar" onclick="location.href='./visuCliente.jsp'">Visualizar Clientes</button>
             </div>
         </form>
 
     </div>
 
-    <script src="cadCliente.js"></script>
+    <script src="../js/cadCliente.js"></script>
 </body>
 </html>

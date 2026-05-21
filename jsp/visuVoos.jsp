@@ -499,19 +499,19 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+                <a href="http://localhost/dashboard/SkyMilles/adm.jsp"><img class="logo-img"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
                 <h1>Voos Cadastrados</h1>
             </div>
             <div class="header-actions">
-                <button class="back-btn" onclick="window.location.href='voos.html'">← Voltar</button>
+                <button class="back-btn" onclick="window.location.href='./voos.jsp'">← Voltar</button>
             </div>
         </div>
 
         <div class="controls">
             <button class="btn btn-refresh" onclick="carregarVoos()">🔄 Atualizar</button>
             <button class="btn btn-export" onclick="exportarVoos()">📥 Exportar JSON</button>
-            <button class="btn btn-novo" onclick="window.location.href='voos.html'">➕ Novo Voo</button>
+            <button class="btn btn-novo" onclick="window.location.href='./voos.jsp'">➕ Novo Voo</button>
         </div>
 
         <div class="stats" id="stats">

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <title>Login - SkyMilles</title>
 </head>
 
@@ -79,7 +79,7 @@
                 <!-- Cabeçalho com Login e Logo -->
                 <div class="login-header">
                     <h1>Login</h1>
-                    <a href="index.html" class="logo-box">
+                    <a href="./index.jsp" class="logo-box">
                         <img src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="SkyMilles Logo">
                     </a>
                 </div>
@@ -122,7 +122,7 @@
                         </div>
 
                         <div class="register-link">
-                            Não tem uma conta? <a href="cadastro.html">Cadastre-se aqui</a>
+                            Não tem uma conta? <a href="./cadastro.jsp">Cadastre-se aqui</a>
                         </div>
                 </form>
 
@@ -138,8 +138,8 @@
 
     <!-- Google Identity Services -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    <script src="login.js"></script>
-    <script src="auth.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

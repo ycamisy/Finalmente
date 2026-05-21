@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Skymilles</title>
-    <link rel="stylesheet" href="perfil.css">
+    <link rel="stylesheet" href="../css/perfil.css">
 </head>
 <body>
     <!-- Loading -->
@@ -17,8 +17,8 @@
     <header id="header">
         <a href="http://localhost/dashboard/SkyMilles/"><img id="Logo"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
-        <a id="NomeMarca" href="index.html"><span>SKY</span>MILLES</a>
-        <button class="btn-back" onclick="window.location.href='index.html'">
+        <a id="NomeMarca" href="./index.jsp"><span>SKY</span>MILLES</a>
+        <button class="btn-back" onclick="window.location.href='./index.jsp'">
                 ← Voltar para Início
             </button>
     </header>
@@ -401,8 +401,8 @@
             }
         });
     </script>
-    <script src="auth.js"></script>
-    <script src="perfil.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/perfil.js"></script>
 
     <!-- Footer -->
     <footer>

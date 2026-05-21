@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - SkyMilles</title>
-    <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
 </head>
 
 <body>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="left-section">
-        <button class="back-button" onclick="location.href='index.html'">
+        <button class="back-button" onclick="location.href='./index.jsp'">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
             </svg>
@@ -45,7 +45,7 @@
             <!-- Cabeçalho com Cadastro e Logo -->
             <div class="cadastro-header">
                 <h1>Cadastro</h1>
-                <a href="index.html" class="logo-box">
+                <a href="./index.jsp" class="logo-box">
                     <img src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="SkyMilles Logo">
                 </a>
             </div>
@@ -134,7 +134,7 @@
                     <button type="submit" class="register-btn">CADASTRAR</button>
 
                     <div class="footer-text">
-                        Deseja ter um plano? <a href="index.html#planos"
+                        Deseja ter um plano? <a href="./index.jsp#planos"
                             style="color: #f8c537; text-decoration: none;">Clique aqui</a><br>
                         para saber mais.
                     </div>
@@ -142,7 +142,7 @@
             </div>
         </div>
     </div>
-    <script src="cadastro.js"></script>
+    <script src="../js/cadastro.js"></script>
 </body>
 
 </html>

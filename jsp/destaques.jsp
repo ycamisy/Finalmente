@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyMilles - Ofertas em Destaque</title>
+    <link rel="stylesheet" href="../css/destaques.css">
+    <link rel="stylesheet" href="../css/searchStyles.css">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header id="header">
+        <a href="http://localhost/dashboard/SkyMilles/"><img id="Logo"
+                src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+        <a id="NomeMarca" href="#"><span>SKY</span>MILLES</a>
+
+        <!-- Barra de pesquisa (visível apenas no desktop) -->
+        <div class="search-container">
+            <div class="search-wrapper">
+                <div class="search-input-container" id="searchInputContainer">
+                    <input type="text" id="search-input" placeholder="Buscar voos...">
+                </div>
+                <img class="lupa" id="searchIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png"
+                    alt="Buscar">
+            </div>
+            <div id="searchResults"></div>
+        </div>
+
+        <!-- Menu Desktop -->
+        <nav id="main-nav">
+            <button class="ButtonMenu" onclick="location.href='./destaques.jsp'">Destaques</button>
+            <button class="ButtonMenu" onclick="location.href='./pacotes.jsp'">Pacotes Promocionais</button>
+            <button class="ButtonMenu" onclick="location.href='./conheca.jsp'">Conheça a Sky Milles</button>
+        </nav>
+
+        <!-- Perfil e Botão Hambúrguer -->
+        <div class="header-right">
+            <div class="perfil-container">
+                <img class="perfil" src="https://i.postimg.cc/qMvvdyYp/download-3.jpg" alt="Sua Foto" id="perfil-img">
+                <div class="dropdown-menu" id="dropdown-menu">
+                    <button onclick="location.href='./login.jsp'">Login</button>
+                    <button onclick="location.href='./cadastro.jsp'">Cadastrar</button>
+                </div>
+            </div>
+
+            <!-- Botão Hambúrguer (visível apenas no mobile) -->
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Overlay escuro para mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Menu Mobile Lateral -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="back-arrow" id="back-arrow">←</button>
+            <span class="mobile-menu-title">Faça seu login</span>
+            <div class="mobile-perfil-container">
+                <img class="mobile-menu-perfil" src="https://i.postimg.cc/qMvvdyYp/download-3.jpg" alt="Perfil"
+                    id="mobile-perfil-img">
+                <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
+                    <button onclick="location.href='./login.jsp'">Login</button>
+                    <button onclick="location.href='./cadastro.jsp'">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+        <nav class="mobile-menu-nav">
+            <button class="mobile-menu-item" onclick="location.href='./destaques.jsp'">DESTAQUES</button>
+            <button class="mobile-menu-item" onclick="location.href='./pacotes.jsp'">PACOTES PROMOCIONAIS</button>
+            <button class="mobile-menu-item" onclick="location.href='./conheca.jsp'">CONHEÇA A SKY MILLES</button>
+        </nav>
+        <!-- Logo no rodapé do menu -->
+        <div class="mobile-menu-footer">
+            <img src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles">
+            <div class="mobile-menu-footer-text"><span>SKY</span>MILLES</div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Ofertas Mais Procuradas</h2>
+            <p>Confira os voos e pacotes que estão fazendo sucesso!</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('voos')" id="tab-voos">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path
+                        d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+                </svg>
+                Voos em Destaque
+            </button>
+            <button class="tab-btn" onclick="showTab('pacotes')" id="tab-pacotes">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0 Z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
+                Pacotes Mais Vendidos
+            </button>
+        </div>
+
+        <!-- Voos Grid -->
+        <div id="voos-content" class="grid"></div>
+
+        <!-- Pacotes Grid -->
+        <div id="pacotes-content" class="grid hidden"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-column">
+                    <h3>Nossos Serviços</h3>
+                    <ul>
+                        <li><a href="./passagens.jsp">Passagens Aéreas</a></li>
+                        <li><a href="./hoteis.jsp">Reserva de Hotéis</a></li>
+                        <li><a href="./pacotes.jsp">Pacotes Promocionais</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Institucional</h3>
+                    <ul>
+                        <li><a href="./conheca.jsp">Conheça a Sky Milles</a></li>
+                        <li><a href="./termos.jsp">Termos de Serviço</a></li>
+                        <li><a href="./privacidade.jsp">Políticas de Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Ajuda</h3>
+                    <ul>
+                        <li><a href="./perguntas.jsp">Perguntas Frequentes</a></li>
+                        <li><a href="./suporte.jsp">Central de Suporte</a></li>
+                        <li><a href="./status-voo.jsp">Status de Voo</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Formas de Pagamento</h3>
+                    <div class="payment-methods">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                            alt="Mastercard">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                        <img src="https://i.postimg.cc/ZnqJNwgm/boleto.png" alt="Boleto">
+                        <img src="https://i.postimg.cc/zvfqhxMv/pix.png" alt="Pix">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <a href="http://localhost/dashboard/SkyMilles/"><img
+                            src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
+                    <div class="footer-brand-text"><span>SKY</span>MILLES</div>
+                </div>
+
+                <div class="footer-social">
+                    <span>Entre em contato</span>
+                    <div class="social-links">
+                        <a href="#" title="WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                            </svg>
+                        </a>
+                        <a href="#" title="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#1877F2">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                        <a href="#" title="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#instagram-gradient)">
+                                <defs>
+                                    <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#FD5949;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#D6249F;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#285AEB;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                © 2025 SkyMilles. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Reserva -->
+    <div id="reservaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✈️ Finalizar Reserva</h3>
+                <button class="close-modal" onclick="fecharModal()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="successMessage" class="success-message">
+                    Reserva realizada com sucesso! Você receberá um e-mail de confirmação.
+                </div>
+
+                <div class="booking-summary" id="bookingSummary"></div>
+
+                <form id="reservaForm" onsubmit="enviarReserva(event)">
+                    <!-- Dados Pessoais -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            👤 Dados Pessoais
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nome">Nome Completo <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">E-mail <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="telefone">Telefone <span class="required">*</span></label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cpf">CPF <span class="required">*</span></label>
+                                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required
+                                    maxlength="14">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="passageiros">Passageiros <span class="required">*</span></label>
+                                <select id="passageiros" name="passageiros" required>
+                                    <option value="">Selecione</option>
+                                    <option value="1">1 passageiro</option>
+                                    <option value="2">2 passageiros</option>
+                                    <option value="3">3 passageiros</option>
+                                    <option value="4">4 passageiros</option>
+                                    <option value="5+">5+ passageiros</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Observações -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            📝 Informações Adicionais
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacoes">Observações ou Solicitações Especiais</label>
+                            <textarea id="observacoes" name="observacoes" rows="4"
+                                placeholder="Ex: Preferência de assento, necessidades especiais, etc..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="btnSubmit">
+                        Confirmar Reserva
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/searchSystem.js"></script>
+    <script src="../js/destaques.js"></script>
+    <script src="../js/auth.js"></script>
+</body>
+
+</html>

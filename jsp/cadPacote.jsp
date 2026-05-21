@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadCliente.css">
+    <link rel="stylesheet" href="../css/cadCliente.css">
     <title>Cadastro de Pacotes</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="logo-section">
                 <h1>Cadastro de Pacotes</h1>
             </div>
-            <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+            <a href="http://localhost/dashboard/SkyMilles/adm.jsp"><img class="logo-img"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
         </div>
 
@@ -187,11 +187,11 @@
             <div class="button-group">
                 <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 <button type="submit" class="btn-salvar" id="btnCadastrar">Salvar Pacote</button>
-                <button type="button" class="btn-visualizar" onclick="location.href='visuPacote.html'">Visualizar Pacotes</button>
+                <button type="button" class="btn-visualizar" onclick="location.href='./visuPacote.jsp'">Visualizar Pacotes</button>
             </div>
         </form>
     </div>
 
-    <script src="cadPacote.js"></script>
+    <script src="../js/cadPacote.js"></script>
 </body>
 </html>

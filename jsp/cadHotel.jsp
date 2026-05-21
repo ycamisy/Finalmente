@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cadHotel.css">
+    <link rel="stylesheet" href="../css/cadHotel.css">
     <title>Cadastro de Hotéis e Quartos</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="logo-section">
                 <h1>Cadastro de Hotéis e Quartos</h1>
             </div>
-            <a href="http://localhost/dashboard/SkyMilles/adm.html">
+            <a href="http://localhost/dashboard/SkyMilles/adm.jsp">
                 <img class="logo-img" src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles">
             </a>
         </div>
@@ -234,11 +234,11 @@
             <div class="button-group">
                 <button type="button" class="btn-cancelar" onclick="cancelar()">Cancelar</button>
                 <button type="submit" class="btn-salvar">Salvar</button>
-                <button type="button" class="btn-visualizar" onclick="location.href='visuHoteis.html'">Visualizar Hotéis</button>
+                <button type="button" class="btn-visualizar" onclick="location.href='./visuHoteis.jsp'">Visualizar Hotéis</button>
             </div>
         </form>
     </div>
 
-    <script src="cadHotel.js"></script>
+    <script src="../js/cadHotel.js"></script>
 </body>
 </html>

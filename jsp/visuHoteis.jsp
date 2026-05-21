@@ -325,12 +325,12 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <a href="http://localhost/dashboard/SkyMilles/adm.html"><img class="logo-img"
+                <a href="http://localhost/dashboard/SkyMilles/adm.jsp"><img class="logo-img"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
                 <h1>Hotéis e Quartos</h1>
             </div>
             <div class="header-actions">
-                <button class="back-btn" onclick="window.location.href='cadHotel.html'">← Voltar</button>
+                <button class="back-btn" onclick="window.location.href='./cadHotel.jsp'">← Voltar</button>
             </div>
         </div>
 
@@ -343,7 +343,7 @@
         <!-- ABA HOTÉIS -->
         <div id="hoteis" class="tab-content active">
             <div class="controls">
-                <button class="btn btn-novo" onclick="window.location.href='cadHotel.html'">➕ Novo Hotel</button>
+                <button class="btn btn-novo" onclick="window.location.href='./cadHotel.jsp'">➕ Novo Hotel</button>
                 <button class="btn btn-refresh" onclick="carregarHoteis()">🔄 Atualizar</button>
             </div>
 
@@ -392,7 +392,7 @@
         <!-- ABA QUARTOS -->
         <div id="quartos" class="tab-content">
             <div class="controls">
-                <button class="btn btn-novo" onclick="window.location.href='cadHotel.html'">➕ Novo Quarto</button>
+                <button class="btn btn-novo" onclick="window.location.href='./cadHotel.jsp'">➕ Novo Quarto</button>
                 <button class="btn btn-refresh" onclick="carregarQuartos()">🔄 Atualizar</button>
             </div>
 

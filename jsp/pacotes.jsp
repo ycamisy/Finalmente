@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pacotes - SkyMilles</title>
-    <link rel="stylesheet" href="css.css">
-    <link rel="stylesheet" href="pacotes.css">
-    <link rel="stylesheet" href="searchStyles.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/pacotes.css">
+    <link rel="stylesheet" href="../css/searchStyles.css">
 </head>
 
 <body>
@@ -31,9 +31,9 @@
 
         <!-- Menu Desktop -->
         <nav id="main-nav">
-            <button class="ButtonMenu" onclick="location.href='destaques.html'">Destaques</button>
-            <button class="ButtonMenu active" onclick="location.href='pacotes.html'">Pacotes Promocionais</button>
-            <button class="ButtonMenu" onclick="location.href='conheca.html'">Conheça a Sky Milles</button>
+            <button class="ButtonMenu" onclick="location.href='destaques.jsp'">Destaques</button>
+            <button class="ButtonMenu active" onclick="location.href='pacotes.jsp'">Pacotes Promocionais</button>
+            <button class="ButtonMenu" onclick="location.href='conheca.jsp'">Conheça a Sky Milles</button>
         </nav>
 
         <!-- Perfil e Botão Hambúrguer -->
@@ -41,8 +41,8 @@
             <div class="perfil-container">
                 <img class="perfil" src="https://i.postimg.cc/qMvvdyYp/download-3.jpg" alt="Sua Foto" id="perfil-img">
                 <div class="dropdown-menu" id="dropdown-menu">
-                    <button onclick="location.href='login.html' ">Login</button>
-                    <button onclick="location.href='cadastro.html' ">Cadastrar</button>
+                    <button onclick="location.href='login.jsp' ">Login</button>
+                    <button onclick="location.href='cadastro.jsp' ">Cadastrar</button>
                 </div>
             </div>
 
@@ -67,15 +67,15 @@
                 <img class="mobile-menu-perfil" src="https://i.postimg.cc/qMvvdyYp/download-3.jpg" alt="Perfil"
                     id="mobile-perfil-img">
                 <div class="mobile-dropdown-menu" id="mobile-dropdown-menu">
-                    <button onclick="location.href='login.html'">Login</button>
-                    <button onclick="location.href='cadastro.html'">Cadastrar</button>
+                    <button onclick="location.href='login.jsp'">Login</button>
+                    <button onclick="location.href='cadastro.jsp'">Cadastrar</button>
                 </div>
             </div>
         </div>
         <nav class="mobile-menu-nav">
-            <button class="mobile-menu-item" id="destaque-item" onclick="location.href='destaques.html'">DESTAQUES</button>
-            <button class="mobile-menu-item" onclick="location.href='pacotes.html'">PACOTES PROMOCIONAIS</button>
-            <button class="mobile-menu-item" onclick="location.href='conheca.html'">CONHEÇA A SKY MILLES</button>
+            <button class="mobile-menu-item" id="destaque-item" onclick="location.href='destaques.jsp'">DESTAQUES</button>
+            <button class="mobile-menu-item" onclick="location.href='pacotes.jsp'">PACOTES PROMOCIONAIS</button>
+            <button class="mobile-menu-item" onclick="location.href='conheca.jsp'">CONHEÇA A SKY MILLES</button>
         </nav>
         <!-- Logo no rodapé do menu -->
         <div class="mobile-menu-footer">
@@ -1254,27 +1254,27 @@
                 <div class="footer-column">
                     <h3>Nossos Serviços</h3>
                     <ul>
-                        <li><a href="./passagens.html">Passagens Aéreas</a></li>
-                        <li><a href="./hoteis.html">Reserva de Hotéis</a></li>
-                        <li><a href="./pacotes.html">Pacotes Promocionais</a></li>
+                        <li><a href="./passagens.jsp">Passagens Aéreas</a></li>
+                        <li><a href="./hoteis.jsp">Reserva de Hotéis</a></li>
+                        <li><a href="./pacotes.jsp">Pacotes Promocionais</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Institucional</h3>
                     <ul>
-                        <li><a href="./conheca.html">Conheça a Sky Milles</a></li>
-                        <li><a href="./termos.html">Termos de Serviço</a></li>
-                        <li><a href="./privacidade.html">Políticas de Privacidade</a></li>
+                        <li><a href="./conheca.jsp">Conheça a Sky Milles</a></li>
+                        <li><a href="./termos.jsp">Termos de Serviço</a></li>
+                        <li><a href="./privacidade.jsp">Políticas de Privacidade</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-column">
                     <h3>Ajuda</h3>
                     <ul>
-                        <li><a href="./perguntas.html">Perguntas Frequentes</a></li>
-                        <li><a href="./suporte.html">Central de Suporte</a></li>
-                        <li><a href="./status-voo.html">Status de Voo</a></li>
+                        <li><a href="./perguntas.jsp">Perguntas Frequentes</a></li>
+                        <li><a href="./suporte.jsp">Central de Suporte</a></li>
+                        <li><a href="./status-voo.jsp">Status de Voo</a></li>
                     </ul>
                 </div>
 
@@ -1334,9 +1334,9 @@
             </div>
         </div>
     </footer>
-    <script src="searchSystem.js"></script>
-    <script src="pacotes.js"></script>
-    <script src="auth.js"></script>
+    <script src="../js/searchSystem.js"></script>
+    <script src="../js/pacotes.js"></script>
+    <script src="../js/auth.js"></script>
 </body>
 
 </html>

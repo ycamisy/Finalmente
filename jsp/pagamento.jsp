@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento - SkyMilles</title>
-    <link rel="stylesheet" href="pagamento.css">
+    <link rel="stylesheet" href="../css/pagamento.css">
 </head>
 <body>
     <!-- Loading -->
@@ -17,8 +17,8 @@
     <header id="header">
         <a href="http://localhost/dashboard/SkyMilles/"><img id="Logo"
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
-        <a id="NomeMarca" href="index.html"><span>SKY</span>MILLES</a>
-        <button class="btn-back" onclick="window.location.href='index.html'">
+        <a id="NomeMarca" href="./index.jsp"><span>SKY</span>MILLES</a>
+        <button class="btn-back" onclick="window.location.href='./index.jsp'">
                 ← Voltar para Início
             </button>
     </header>   
@@ -199,7 +199,7 @@
             <h2>Pagamento Confirmado!</h2>
             <p>Sua assinatura foi ativada com sucesso.</p>
             <p>Enviamos um e-mail de confirmação com todos os detalhes.</p>
-            <button class="btn-primary" onclick="window.location.href='perfil.html'">
+            <button class="btn-primary" onclick="window.location.href='perfil.jsp'">
                 Ir para Meu Perfil
             </button>
         </div>
@@ -219,6 +219,6 @@
         </div>
     </footer>
 
-    <script src="pagamento.js"></script>
+    <script src="../js/pagamento.js"></script>
 </body>
 </html>

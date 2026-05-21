@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkyMilles - Ofertas em Destaque</title>
-    <link rel="stylesheet" href="destaques.css">
-    <link rel="stylesheet" href="searchStyles.css">
+    <title>Voos Disponíveis - SkyMilles</title>
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/status.css">
+    <link rel="stylesheet" href="../css/searchStyles.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles"></a>
         <a id="NomeMarca" href="#"><span>SKY</span>MILLES</a>
 
-        <!-- Barra de pesquisa (visível apenas no desktop) -->
+        <!-- Barra de pesquisa -->
         <div class="search-container">
             <div class="search-wrapper">
                 <div class="search-input-container" id="searchInputContainer">
@@ -30,7 +30,7 @@
 
         <!-- Menu Desktop -->
         <nav id="main-nav">
-            <button class="ButtonMenu" onclick="location.href='./destaques.html'">Destaques</button>
+            <button class="ButtonMenu" id="destaque-btn">Destaques</button>
             <button class="ButtonMenu" onclick="location.href='./pacotes.html'">Pacotes Promocionais</button>
             <button class="ButtonMenu" onclick="location.href='./conheca.html'">Conheça a Sky Milles</button>
         </nav>
@@ -45,7 +45,6 @@
                 </div>
             </div>
 
-            <!-- Botão Hambúrguer (visível apenas no mobile) -->
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -72,50 +71,123 @@
             </div>
         </div>
         <nav class="mobile-menu-nav">
-            <button class="mobile-menu-item" onclick="location.href='./destaques.html'">DESTAQUES</button>
+            <button class="mobile-menu-item" id="destaque-item">DESTAQUES</button>
             <button class="mobile-menu-item" onclick="location.href='./pacotes.html'">PACOTES PROMOCIONAIS</button>
             <button class="mobile-menu-item" onclick="location.href='./conheca.html'">CONHEÇA A SKY MILLES</button>
         </nav>
-        <!-- Logo no rodapé do menu -->
         <div class="mobile-menu-footer">
             <img src="https://i.postimg.cc/nLnYq7Fp/logo-Sky-Milles.png" alt="Logo SkyMilles">
             <div class="mobile-menu-footer-text"><span>SKY</span>MILLES</div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-text">
-            <h2>Ofertas Mais Procuradas</h2>
-            <p>Confira os voos e pacotes que estão fazendo sucesso!</p>
+    <!-- Seção Principal -->
+    <section class="flights-view-section">
+        <div class="container">
+            <div class="page-header">
+                <h1>Voos Disponíveis</h1>
+                <p>Confira todos os voos disponíveis para reserva</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="filters-section">
+                <div class="filter-item">
+                    <label>Buscar Voo</label>
+                    <input type="text" id="buscarVoo" placeholder="Código, origem ou destino..." oninput="buscarVoo()">
+                </div>
+                <div class="filter-item">
+                    <label>Status</label>
+                    <select id="filtroStatus" onchange="filtrarPorStatus()">
+                        <option value="">Todos os Status</option>
+                        <option value="Confirmado">Confirmado</option>
+                        <option value="Agendado">Agendado</option>
+                        <option value="Atrasado">Atrasado</option>
+                        <option value="Embarcando">Embarcando</option>
+                        <option value="Em Voo">Em Voo</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Companhia Aérea</label>
+                    <select id="filtroCompanhia" onchange="filtrarPorCompanhia()">
+                        <option value="">Todas as Companhias</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label>Ordenar Por</label>
+                    <select id="ordenacao" onchange="ordenarVoos()">
+                        <option value="saida">Data de Partida</option>
+                        <option value="valor-asc">Menor Preço</option>
+                        <option value="valor-desc">Maior Preço</option>
+                        <option value="companhia">Companhia</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="statistics-grid">
+                <div class="stat-card total">
+                    <div class="stat-icon">✈️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Voos Disponíveis</div>
+                        <div class="stat-value" id="totalVoos">0</div>
+                    </div>
+                </div>
+                <div class="stat-card airlines">
+                    <div class="stat-icon">🏢</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Companhias</div>
+                        <div class="stat-value" id="totalCompanhias">0</div>
+                    </div>
+                </div>
+                <div class="stat-card price">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <div class="stat-label">A partir de</div>
+                        <div class="stat-value" id="menorPreco">R$ 0</div>
+                    </div>
+                </div>
+                <div class="stat-card routes">
+                    <div class="stat-icon">🗺️</div>
+                    <div class="stat-content">
+                        <div class="stat-label">Rotas</div>
+                        <div class="stat-value" id="totalRotas">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div id="loading" class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Carregando voos...</p>
+            </div>
+
+            <!-- Estado Vazio -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <div class="empty-icon">✈️</div>
+                <h3>Nenhum voo encontrado</h3>
+                <p>Não há voos disponíveis que correspondam aos filtros selecionados.</p>
+            </div>
+
+            <!-- Lista de Voos -->
+            <div id="flightsList" class="flights-list" style="display: none;"></div>
         </div>
-
-        <!-- Tabs -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="showTab('voos')" id="tab-voos">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <path
-                        d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
-                </svg>
-                Voos em Destaque
-            </button>
-            <button class="tab-btn" onclick="showTab('pacotes')" id="tab-pacotes">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0 Z" />
-                    <circle cx="12" cy="10" r="3" />
-                </svg>
-                Pacotes Mais Vendidos
-            </button>
-        </div>
-
-        <!-- Voos Grid -->
-        <div id="voos-content" class="grid"></div>
-
-        <!-- Pacotes Grid -->
-        <div id="pacotes-content" class="grid hidden"></div>
     </section>
+
+    <!-- Modal de Detalhes -->
+    <div id="modalDetalhes" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalhes do Voo</h2>
+                <button class="modal-close" onclick="fecharModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo será preenchido dinamicamente -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-reserve" onclick="reservarVoo()">Reservar este Voo</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -192,7 +264,7 @@
                                     </linearGradient>
                                 </defs>
                                 <path
-                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                                    d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03z" />
                             </svg>
                         </a>
                     </div>
@@ -205,90 +277,9 @@
         </div>
     </footer>
 
-    <!-- Modal de Reserva -->
-    <div id="reservaModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>✈️ Finalizar Reserva</h3>
-                <button class="close-modal" onclick="fecharModal()">&times;</button>
-            </div>
-
-            <div class="modal-body">
-                <div id="successMessage" class="success-message">
-                    Reserva realizada com sucesso! Você receberá um e-mail de confirmação.
-                </div>
-
-                <div class="booking-summary" id="bookingSummary"></div>
-
-                <form id="reservaForm" onsubmit="enviarReserva(event)">
-                    <!-- Dados Pessoais -->
-                    <div class="form-section">
-                        <div class="form-section-title">
-                            👤 Dados Pessoais
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nome">Nome Completo <span class="required">*</span></label>
-                            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">E-mail <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="telefone">Telefone <span class="required">*</span></label>
-                                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="cpf">CPF <span class="required">*</span></label>
-                                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required
-                                    maxlength="14">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="passageiros">Passageiros <span class="required">*</span></label>
-                                <select id="passageiros" name="passageiros" required>
-                                    <option value="">Selecione</option>
-                                    <option value="1">1 passageiro</option>
-                                    <option value="2">2 passageiros</option>
-                                    <option value="3">3 passageiros</option>
-                                    <option value="4">4 passageiros</option>
-                                    <option value="5+">5+ passageiros</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Observações -->
-                    <div class="form-section">
-                        <div class="form-section-title">
-                            📝 Informações Adicionais
-                        </div>
-
-                        <div class="form-group">
-                            <label for="observacoes">Observações ou Solicitações Especiais</label>
-                            <textarea id="observacoes" name="observacoes" rows="4"
-                                placeholder="Ex: Preferência de assento, necessidades especiais, etc..."></textarea>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-submit" id="btnSubmit">
-                        Confirmar Reserva
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script src="searchSystem.js"></script>
-    <script src="destaques.js"></script>
-    <script src="auth.js"></script>
+    <script src="./searchSystem.js"></script>
+    <script src="./js.js"></script>
+    <script src="./status.js"></script>
 </body>
 
 </html>
